@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>catred</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Metadata</h1>
+        </header>
+        <form id="metadata-form">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="Description..." class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="title">Skills</label>
+                <ul class="form-control token-input" contenteditable="true"></ul>
+            </div>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <span>Creation date</span> <span class="badge" id="creation-date"></span>
+                    </li>
+                    <li class="list-group-item active">
+                        <span>Last modified date</span> <span class="badge" id="last-modified"></span>
+                    </li>
+                    <li class="list-group-item active">
+                        <span>Author</span> <span class="badge" id="author"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <button id="submit" class="btn btn-primary">Create and Download R.E.D</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        var data;
+            function loadData(inf){
+                data = inf;
+            }
+            System
+            .import('app')
+            .then(function(app) { var init = new app.main(data.path,data.type);})
+            .catch(function(err) { console.error(err) });
+    </script>
+</body>
+
+</html>
